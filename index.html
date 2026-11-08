@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HRM System - Employee Registration</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f5f9;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: #174a75;
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background: #174a75;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 25px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background: #174a75;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>HRM System</h1>
+    <h2>Employee Registration</h2>
+
+    <form id="employeeForm">
+
+        <input type="text" id="name"
+            placeholder="Employee Name" required>
+
+        <input type="text" id="father"
+            placeholder="Father Name" required>
+
+        <input type="text" id="code"
+            placeholder="Employee Code" required>
+
+        <input type="text" id="job"
+            placeholder="Designation" required>
+
+        <input type="tel" id="phone"
+            placeholder="Phone Number">
+
+        <button type="submit">Register Employee</button>
+
+    </form>
+
+    <h2>Employee List</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Father Name</th>
+                <th>Code</th>
+                <th>Designation</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+
+        <tbody id="employeeList"></tbody>
+    </table>
+
+</div>
+
+<script>
+    const form = document.getElementById("employeeForm");
+
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const name = document.getElementById("name").value;
+        const father = document.getElementById("father").value;
+        const code = document.getElementById("code").value;
+        const job = document.getElementById("job").value;
+        const phone = document.getElementById("phone").value;
+
+        const row = document.createElement("tr");
+
+        [name, father, code, job, phone].forEach(function(value) {
+            const cell = document.createElement("td");
+            cell.textContent = value;
+            row.appendChild(cell);
+        });
+
+        document.getElementById("employeeList").appendChild(row);
+
+        form.reset();
+    });
+</script>
+
+</body>
+</html>
